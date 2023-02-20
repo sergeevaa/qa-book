@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Положительные или отрицательные числа?</title>
+</head>
+<body>
+    <form name="calc">
+    <table>
+        <tr><th colspan="5"><input disabled="true" class="elRes" id="color-res"></th></tr>
+        <tr><td colspan="5"><input type="text" name="input" id="num" class="elRes"></td></tr>
+        <tr class="display"><td colspan="5"><input type="button" value="Submit" OnClick=result()></td></tr>
+        <tr class="buttons">
+            <td><input type="button" value="0" OnClick="calc.input.value += '0'"></td>
+            <td><input type="button" value="1" OnClick="calc.input.value += '1'"></td>
+            <td><input type="button" value="2" OnClick="calc.input.value += '2'"></td>
+            <td><input type="button" value="3" OnClick="calc.input.value += '3'"></td>
+            <td><input type="button" value="4" OnClick="calc.input.value += '4'"></td>
+        </tr>
+        <tr class="buttons">
+            <td><input type="button" value="5" OnClick="calc.input.value += '5'"></td>
+            <td><input type="button" value="6" OnClick="calc.input.value += '6'"></td>
+            <td><input type="button" value="7" OnClick="calc.input.value += '7'"></td>
+            <td><input type="button" value="8" OnClick="calc.input.value += '8'"></td>
+            <td><input type="button" value="9" OnClick="calc.input.value += '9'"></td>
+        </tr>
+        <tr class="display"><td colspan="5"><input type="reset" value="Clear" OnClick=resetResult()></td></tr>
+    </table>
+    </form>
+<script>
+    function result(){
+        let zn = document.getElementById('num').value;
+        let cl = document.getElementById('color-res');
+        if (zn > 0) {
+            cl.className = 'green';
+        }
+        if (zn < 0) {
+            cl.className = 'red';
+        }
+        if (zn == 0) {
+           cl.className = "notFoundStyle";
+        }
+        if (isNaN(zn) == true) {
+            throw new CustomException('Exception message');
+        }
+    }
+    function resetResult(){
+        let cl = document.getElementById('color-res');
+            cl.className = 'elRes';
+            document.calc.input.value = '';
+    }
+</script>
+</body>
+</html>

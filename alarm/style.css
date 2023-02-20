@@ -1,0 +1,55 @@
+body {
+    background: #c6d7ed;
+}
+table {
+    border-spacing : 10px; border-color : blue; border-style: solid;
+    position: fixed top;
+    margin: auto;
+}
+table td {
+    text-align: center;
+}
+
+.buttons input {
+    background: #acc0da;
+    overflow: hidden;
+    height: 40px;
+    width: 80px;
+    border-radius: 80px;
+    font-size: 24px;
+}
+.buttons {
+    color: #acc0da;
+}
+.elRes {
+    background: #d2e7e1;
+    width: 450px;
+    height: 30px;
+    border-radius: 5px;
+}
+.display {
+    color: #acc0da;
+}
+
+.display input{
+    background: #acc0da;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 100px;
+    font-size: 24px;
+}
+.red {
+    background: #d93a02;
+    width: 450px;
+    height: 30px;
+    border-radius: 5px;
+}
+.green {
+    background: #587556;
+    width: 450px;
+    height: 30px;
+    border-radius: 5px;
+}
+.notFoundStyle {
+    visibility: hidden;
+}
