@@ -3,10 +3,17 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Положительные или отрицательные числа?</title>
+    <title>The level of carbon dioxide in the air</title>
 </head>
 <body>
     <form name="calc">
+        <p>
+            The application shows whether the carbon dioxide content in a room is dangerous. The input is the level of gas, and the response is a signal where: 
+            <br>    🟢 green - all is well (up to 400 ppm), 
+            <br>    🟡 yellow - recommended concentration in the room (up to 1000 ppm), 
+            <br>    🟠 orange - the maximum concentration (up to 5000 ppm), 
+            <br>    🔴 red (up to 15000 ppm) - dangerous for life.
+        </p>
     <table>
         <tr><th colspan="5"><input disabled="true" class="elRes" id="color-res"></th></tr>
         <tr><td colspan="5"><input type="text" name="input" id="num" class="elRes"></td></tr>
@@ -32,30 +39,52 @@
     let url = "https://olebbj.pythonanywhere.com/api"
     //let url = "http://127.0.0.1:5001/api"
     function result(){
+    
         let zn = document.getElementById('num').value;
         let cl = document.getElementById('color-res');
         
         let pest_result = new XMLHttpRequest();
         pest_result.open("get", url + "/pest/" + zn);
         pest_result.send();
+
         pest_result.onload = function() {
-            console.log(pest_result.response);
+            color = JSON.parse(pest_result.response).is_pest;
+            switch (color) {
+                case 0: 
+                    cl.className = 'green'; 
+                    break;
+                case 1:  
+                    cl.className = 'yellow'; 
+                    break;
+                case 2:  
+                    cl.className = 'orange'; 
+                    break;
+                case 3:  
+                    cl.className = 'red'; 
+                    break;
+                case 4:  
+                    cl.className = 'notFoundStyle';
+                    throw new CustomException('Exception message'); 
+                    break;
+                default: throw new CustomException('Exception message');
+            }
+            // if (color >= 0) {cl.className = 'green';}
+            // if (color < 0) {cl.className = 'red';}
+            // if (color == 4) {cl.className = "notFoundStyle"; throw new CustomException('Exception message');}
+            console.log(color);
         }
 
-
-        if (zn > 0) {
-            cl.className = 'green';
-        }
-        if (zn < 0) {
-            cl.className = 'red';
-        }
-        if (zn == 0) {
-           cl.className = "notFoundStyle";
-        }
-        if (isNaN(zn) == true) {
-            throw new CustomException('Exception message');
-        }
+    //      fetch(url + "/pest/" + zn)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if (data > 0) {cl.className = 'green';}
+    //         if (data < 0) {cl.className = 'red';}
+    //         if (data == 0) {cl.className = "notFoundStyle";}
+    //         if (isNaN(zn) == true) {throw new CustomException('Exception message');}
+    //     })
+    //     .catch(error => console.error(error));
     }
+    
     function resetResult(){
         let cl = document.getElementById('color-res');
             cl.className = 'elRes';

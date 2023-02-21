@@ -9,7 +9,16 @@ table {
 table td {
     text-align: center;
 }
-
+p {
+    color: rgb(4, 1, 39);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    text-align: left;
+    letter-spacing: 1px;
+    word-spacing: 1px;    
+    border: 1px solid black;
+    margin-bottom: 5%;
+}
 .buttons input {
     background: #acc0da;
     overflow: hidden;
@@ -46,6 +55,18 @@ table td {
 }
 .green {
     background: #587556;
+    width: 450px;
+    height: 30px;
+    border-radius: 5px;
+}
+.yellow {
+    background: #e1de3f;
+    width: 450px;
+    height: 30px;
+    border-radius: 5px;
+}
+.orange {
+    background: #d79f3f;
     width: 450px;
     height: 30px;
     border-radius: 5px;
