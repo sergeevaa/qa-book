@@ -29,9 +29,19 @@
     </table>
     </form>
 <script>
+    
     function result(){
         let zn = document.getElementById('num').value;
         let cl = document.getElementById('color-res');
+        
+        let pest_result = new XMLHttpRequest();
+        pest_result.open("get", "http://127.0.0.1:5001/api/pest/" + zn);
+        pest_result.send();
+        pest_result.onload = function() {
+            console.log(pest_result.response);
+        }
+
+
         if (zn > 0) {
             cl.className = 'green';
         }
