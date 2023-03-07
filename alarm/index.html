@@ -37,7 +37,6 @@
     </form>
 <script>
     let url = "https://olebbj.pythonanywhere.com/api"
-    //let url = "http://127.0.0.1:5001/api"
     function result(){
     
         let zn = document.getElementById('num').value;
@@ -68,21 +67,8 @@
                     break;
                 default: throw new CustomException('Exception message');
             }
-            // if (color >= 0) {cl.className = 'green';}
-            // if (color < 0) {cl.className = 'red';}
-            // if (color == 4) {cl.className = "notFoundStyle"; throw new CustomException('Exception message');}
-            console.log(color);
+             console.log(color);
         }
-
-    //      fetch(url + "/pest/" + zn)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         if (data > 0) {cl.className = 'green';}
-    //         if (data < 0) {cl.className = 'red';}
-    //         if (data == 0) {cl.className = "notFoundStyle";}
-    //         if (isNaN(zn) == true) {throw new CustomException('Exception message');}
-    //     })
-    //     .catch(error => console.error(error));
     }
     
     function resetResult(){
